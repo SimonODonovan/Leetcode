@@ -25,15 +25,13 @@ var removeNthFromEnd = function (head, n) {
     for(let i = 0; i < n; i++) {
         front = front.next;
     }
+    if(!front) return head.next;
     while(front && front.next) {
         front = front.next;
         lag = lag.next;
     }
-    if(!front)
-        return null;
-    else
-        lag.next = lag.next ? lag.next.next : null;
-        return head;
+    lag.next = lag.next ? lag.next.next : null;
+    return head;
 };
 
 const input = [1, 2, 3, 4, 5];
