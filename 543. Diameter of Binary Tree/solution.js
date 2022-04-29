@@ -26,7 +26,16 @@ function TreeNode(val, left, right) {
  * @return {number}
  */
 var diameterOfBinaryTree = function (root) {
-
+    let max = 0;
+    const getHeight = function (root) {
+        if (!root) return 0;
+        let leftHeight = getHeight(root.left);
+        let rightHeight = getHeight(root.right);
+        max = Math.max(max, leftHeight + rightHeight);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+    getHeight(root);
+    return max;
 };
 
 //[1,2,3,4,5]
